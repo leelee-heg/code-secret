@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="application-version" content="0.1.0">
+  <title>Code secret — Jeu de couleurs</title>
+  <link rel="stylesheet" href="style.css?v=0.1.0">
+  <script src="engine.js?v=0.1.0" defer></script>
+  <script src="game.js?v=0.1.0" defer></script>
+</head>
+<body>
+  <main>
+    <header><a href="./index.html" class="brand"><span class="brand-mark" aria-hidden="true">◈</span> Code secret</a><span class="tag">LE JEU SOLO</span></header>
+    <section class="intro"><p class="eyebrow">UN PEU DE LOGIQUE. SIX COULEURS.</p><h1>À vous de<br>percer le code<span>.</span></h1><p>Quatre couleurs cachées, dix essais pour les retrouver.<br>Chaque proposition vous rapproche du secret.</p></section>
+    <div class="layout">
+      <section class="board" aria-label="Partie de Code secret">
+        <div class="board-top"><div><p class="eyebrow">LA COMBINAISON SECRÈTE</p><div id="secret" class="secret" aria-label="Quatre couleurs cachées"></div></div><button id="restart" type="button" class="secondary">↻ Nouvelle partie</button></div>
+        <div class="progress-heading"><h2 id="turn">Essai 1 sur 10</h2><span id="remaining">10 essais restants</span></div>
+        <div id="progress" class="progress" aria-hidden="true"></div>
+        <form id="guess-form" novalidate>
+          <fieldset id="inputs"><legend>Votre proposition, de gauche à droite</legend><div id="slots" class="slots"></div></fieldset>
+          <p id="error" role="alert" class="error"></p>
+          <div class="submit-row"><span>Les répétitions sont possibles.</span><button id="submit" type="submit" class="primary">Valider l’essai <span aria-hidden="true">→</span></button></div>
+        </form>
+        <div id="result" role="status" aria-live="polite" class="result" hidden></div>
+        <div class="history-heading"><h2>Vos essais</h2><span id="history-count">0 / 10</span></div>
+        <p id="empty" class="empty">Le premier pas vers le secret commence ici.<br><span>Composez votre première proposition ci-dessus.</span></p>
+        <div id="history" class="history" aria-label="Historique des essais"></div>
+      </section>
+      <aside>
+        <section class="guide"><p class="eyebrow">COMMENT JOUER</p><h2>Suivez les indices.</h2><p>Choisissez une couleur dans chacun des quatre emplacements, puis validez votre proposition.</p><div class="hint"><span class="hint-symbol filled" aria-hidden="true"></span><div><h3>Bien placées</h3><p>La bonne couleur,<br>au bon endroit.</p></div></div><div class="hint"><span class="hint-symbol outline" aria-hidden="true"></span><div><h3>Mal placées</h3><p>La bonne couleur,<br>à un autre endroit.</p></div></div><p class="note">Les deux nombres résument l’essai entier : ils ne désignent aucun emplacement. Chaque occurrence compte une seule fois.</p></section>
+        <section class="palette-guide"><p class="eyebrow">LES SIX COULEURS</p><div id="palette" class="palette"></div></section>
+        <p class="small-note">Un code fixe par partie.<br>Une victoire dès 4 couleurs bien placées.</p>
+      </aside>
+    </div>
+    <footer><span>Version 0.1.0 · À chaque essai, une piste de plus.</span><span>Référence : code-couleurs-1.0</span></footer>
+  </main>
+</body>
+</html>

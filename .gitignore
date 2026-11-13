@@ -1,0 +1,6 @@
+# Fichiers locaux macOS
+.DS_Store
+
+# Dépendances ou journaux locaux éventuels
+node_modules/
+*.log
