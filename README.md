@@ -6,9 +6,17 @@ Jeu solo réalisé pour le cours avec l’aide de Codex. Retrouvez quatre couleu
 - Application GitHub Pages : publication et adresse encore à vérifier.
 - Version de rendu : tag `jalon-1` conservé localement ; transfert de l’historique et du tag, puis remise Cyberlearn à effectuer.
 
+## État actuel
+
+Le jeu local, les tests du moteur et les preuves de correction sont disponibles. Les résultats observés sont détaillés ci-dessous ; ils ne constituent pas une vérification de l’application publiée. La publication et le transfert du tag restent à terminer. L’API commune 0.2 est hors du périmètre actuel.
+
 ## Jouer et comprendre les règles
 
 Ouvrir `index.html` dans un navigateur récent : aucune installation pour jouer. Choisir quatre couleurs de gauche à droite, puis « Valider l’essai ». Consulter les indices et l’historique ; « Nouvelle partie » recommence le jeu.
+
+Pour obtenir les fichiers, télécharger le ZIP depuis le dépôt GitHub, l’extraire, puis ouvrir `index.html` dans le dossier extrait en conservant les autres fichiers à côté. Node.js est nécessaire pour les tests automatisés uniquement, pas pour jouer.
+
+Premier parcours : sélectionner rouge–bleu–vert–jaune, puis valider. **Attendu** : une ligne dans l’historique, un essai consommé et deux nombres d’indices. Les valeurs dépendent du secret aléatoire. Si la proposition gagne, la partie se termine immédiatement. « Nouvelle partie » doit ensuite vider l’historique et les sélecteurs, remettre le compteur à zéro et cacher le secret. Le parcours à partir d’un ZIP fraîchement téléchargé reste à essayer.
 
 L’[énoncé du projet, édition 2.2 du 3 novembre 2026](https://docs.google.com/document/d/17RUqUnEvIilitiNSY1kbK0QT7vBVcUeAT3L6ONJN8XU/edit) fait foi : référence **code-couleurs-1.0**.
 
@@ -30,7 +38,7 @@ Nous conservons une application statique en HTML, CSS et JavaScript, sans framew
 | `engine.js` | Secret, validation, indices et fin de partie |
 | `game.js` | Sélecteurs, historique, messages et redémarrage |
 | `tests.cjs` | Vérifications reproductibles du moteur |
-| `AGENTS.md` | Consignes durables pour Codex |
+| [AGENTS.md](AGENTS.md) | Consignes durables pour Codex : méthode, contrôles, Git et restitution |
 | `docs/preuves/` | Captures de la correction avant/après |
 
 API interne : `CodeCouleurs.createGame(generateurCouleur?)` crée une partie, `etat()` en retourne une copie, `proposer([...])` retourne `{ ok, erreur?, partie }`, `nouvellePartie()` réinitialise. États : `en_cours`, `gagnee`, `perdue`. Le générateur injectable sert aux tests. Cette API interne n’est pas le contrat commun 0.2.
@@ -78,14 +86,16 @@ Ces contrôles ne remplacent pas un essai sur vrai smartphone, un parcours clavi
 ## Limites, questions ouvertes et remise J1
 
 - Confirmer le nom « Code secret » et l’apparence proposée ; ce sont des choix libres.
-- Les quatre liens fournis ont été lus. La pièce jointe a été remplacée par un lien, selon la précision donnée dans le chat.
+- Les guides AGENTS et README du cours (version 1.0 du 3 novembre 2026) ont été relus le 13 novembre : les consignes de travail restent dans `AGENTS.md`, tandis que l’usage, les résultats et les limites restent dans ce README. Cette mise à jour porte uniquement sur la documentation ; elle n’ajoute pas de nouveau résultat de test du jeu.
 - Relire la décision avec Codex et les preuves ; aucune conversation n’est à publier dans le dépôt.
-- Le 13 novembre, le dépôt cible est devenu `leelee-heg/code-secret`. L’écriture par la connexion GitHub du chat fonctionne sur ce nouveau dépôt ; les fichiers sont envoyés par cette connexion, avec de nouveaux commits d’import. Les SHA cités dans les preuves ci-dessus désignent les commits locaux d’origine, qui ne sont pas encore transférés sur GitHub.
-- Le terminal Git reste sans authentification HTTPS. Son dépôt `origin` désigne encore l’ancien dépôt ; les historiques local et GitHub sont distincts. Avant tout prochain envoi avec Git, relier le nouveau dépôt et intégrer les historiques sans réécriture ni envoi forcé. Le tag local n’a pas été déplacé ni publié.
+- Le dépôt cible est `leelee-heg/code-secret`. Les fichiers sont transférés par la connexion GitHub avec des commits d’import. Les SHA cités dans les preuves ci-dessus désignent les commits locaux d’origine ; leur transfert reste à effectuer.
+- Le 18 novembre, `origin` a été corrigé vers ce dépôt et l’historique GitHub a été récupéré pour être réuni à l’historique local, en conservant les compléments de documentation. L’envoi direct reste bloqué : `git push --dry-run` ne trouve pas d’authentification HTTPS GitHub dans le terminal. Après connexion de Git, récupérer les éventuels nouveaux commits, vérifier la fusion, puis envoyer `main` et le tag `jalon-1` sans envoi forcé. Le tag local n’a pas été déplacé ; sa publication reste à effectuer.
 - GitHub Pages reste à activer : dans le dépôt, Settings → Pages → « Deploy from a branch », branche `main`, dossier `/ (root)`. Vérifier le jeu à l’adresse affichée puis noter cette adresse ici. Le serveur local ne constitue pas une publication. Sur Cyberlearn, remettre les deux liens et le tag avant le 20 novembre au soir ; l’heure exacte est à vérifier sur la plateforme. Aucune vidéo pour J1.
 - Le secret local n’est pas protégé contre l’inspection du navigateur. Recharger perd la partie. Les polices Google sont facultatives ; le fonctionnement hors ligne n’a pas été vérifié.
 - L’API interne n’est **pas annoncée conforme à l’API commune 0.2**. L’intégration sur la même partie que l’interface reste pour J2, ainsi que l’essai sur vrai smartphone. Pas de PWA ni d’extension à ce stade.
 
-Pour reprendre : lire ce README, lancer les tests, reproduire le cas à changer, puis suivre `AGENTS.md`. Signaler un défaut par une issue du dépôt avec version, étapes, attendu et obtenu, sans donnée privée.
+## Aide et reprise
+
+Pour reprendre : lire ce README et [AGENTS.md](AGENTS.md), lancer les tests, puis reproduire le cas à changer. Le projet est maintenu dans le compte GitHub `leelee-heg`. Signaler un défaut ou proposer une amélioration dans les [issues du dépôt](https://github.com/leelee-heg/code-secret/issues), avec version ou commit, étapes, attendu et obtenu, sans donnée privée. Une contribution doit rester dans le périmètre demandé et décrire les vérifications effectuées.
 
 Autres supports consultés : [atelier du 11 novembre](https://docs.google.com/presentation/d/1Yi_XaAN5B_8kT8FrJXQ6rpPXLBk-8riz5rpyb55_Weo/edit), [guide README](https://docs.google.com/document/d/10FoB8lHkMB_Ys30Zcll1dFR_1TZ5nlNyhXRihrIIFjw/edit), [guide AGENTS](https://docs.google.com/document/d/1_epbOr-PrHMvFYcZaeLMDIjAmcKWd40ORtTX8Ia6_Sw/edit).
