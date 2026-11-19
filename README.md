@@ -3,16 +3,16 @@
 Jeu solo réalisé pour le cours avec l’aide de Codex. Retrouvez quatre couleurs cachées en dix essais. Version **0.1.0**, préparée pour le jalon 1 du **20 novembre 2026 au soir**.
 
 - [Dépôt GitHub](https://github.com/leelee-heg/code-secret)
-- Application GitHub Pages : publication et adresse encore à vérifier.
-- Version de rendu : tag `jalon-1` conservé localement ; transfert de l’historique et du tag, puis remise Cyberlearn à effectuer.
+- [Application publiée sur GitHub Pages](https://leelee-heg.github.io/code-secret/)
+- [Version de rendu : tag GitHub `jalon-1`](https://github.com/leelee-heg/code-secret/tree/jalon-1), commit `9f1d7c2`.
 
 ## État actuel
 
-Le jeu local, les tests du moteur et les preuves de correction sont disponibles. Les résultats observés sont détaillés ci-dessous ; ils ne constituent pas une vérification de l’application publiée. La publication et le transfert du tag restent à terminer. L’API commune 0.2 est hors du périmètre actuel.
+Le jeu est publié sur GitHub Pages et la version de rendu est repérée sur GitHub par le tag `jalon-1`. L’accès au site, l’affichage initial de la version 0.1.0 et la présence du tag ont été vérifiés le **19 novembre 2026**. Les tests du moteur et les preuves de correction sont disponibles ci-dessous. Les parcours de jeu n’ont pas été rejoués sur le site publié lors de cette vérification. La remise Cyberlearn reste à effectuer. L’API commune 0.2 est hors du périmètre actuel.
 
 ## Jouer et comprendre les règles
 
-Ouvrir `index.html` dans un navigateur récent : aucune installation pour jouer. Choisir quatre couleurs de gauche à droite, puis « Valider l’essai ». Consulter les indices et l’historique ; « Nouvelle partie » recommence le jeu.
+Ouvrir l’[application en ligne](https://leelee-heg.github.io/code-secret/) dans un navigateur récent : aucune installation pour jouer. Choisir quatre couleurs de gauche à droite, puis « Valider l’essai ». Consulter les indices et l’historique ; « Nouvelle partie » recommence le jeu. Il est aussi possible d’ouvrir `index.html` localement.
 
 Pour obtenir les fichiers, télécharger le ZIP depuis le dépôt GitHub, l’extraire, puis ouvrir `index.html` dans le dossier extrait en conservant les autres fichiers à côté. Node.js est nécessaire pour les tests automatisés uniquement, pas pour jouer.
 
@@ -89,8 +89,9 @@ Ces contrôles ne remplacent pas un essai sur vrai smartphone, un parcours clavi
 - Les guides AGENTS et README du cours (version 1.0 du 3 novembre 2026) ont été relus le 13 novembre : les consignes de travail restent dans `AGENTS.md`, tandis que l’usage, les résultats et les limites restent dans ce README. Cette mise à jour porte uniquement sur la documentation ; elle n’ajoute pas de nouveau résultat de test du jeu.
 - Relire la décision avec Codex et les preuves ; aucune conversation n’est à publier dans le dépôt.
 - Le dépôt cible est `leelee-heg/code-secret`. Les fichiers sont transférés par la connexion GitHub avec des commits d’import. Les SHA cités dans les preuves ci-dessus désignent les commits locaux d’origine ; leur transfert reste à effectuer.
-- Le 18 novembre, `origin` a été corrigé vers ce dépôt et l’historique GitHub a été récupéré pour être réuni à l’historique local, en conservant les compléments de documentation. L’envoi direct reste bloqué : `git push --dry-run` ne trouve pas d’authentification HTTPS GitHub dans le terminal. Après connexion de Git, récupérer les éventuels nouveaux commits, vérifier la fusion, puis envoyer `main` et le tag `jalon-1` sans envoi forcé. Le tag local n’a pas été déplacé ; sa publication reste à effectuer.
-- GitHub Pages reste à activer : dans le dépôt, Settings → Pages → « Deploy from a branch », branche `main`, dossier `/ (root)`. Vérifier le jeu à l’adresse affichée puis noter cette adresse ici. Le serveur local ne constitue pas une publication. Sur Cyberlearn, remettre les deux liens et le tag avant le 20 novembre au soir ; l’heure exacte est à vérifier sur la plateforme. Aucune vidéo pour J1.
+- Le 18 novembre, `origin` a été corrigé vers ce dépôt et les historiques ont été réunis localement. Le dernier essai d’envoi direct était bloqué par l’absence d’authentification HTTPS GitHub dans le terminal ; cet accès n’a pas été retesté ici.
+- Le tag GitHub `jalon-1` pointe vers `9f1d7c2`, tandis que le tag local du même nom pointe vers `05f7b67`. Pour consulter le rendu, utiliser le lien GitHub en tête de ce README. Aucun tag n’a été déplacé pendant cette mise à jour. Ne pas tenter d’envoyer le tag local par-dessus le tag distant. Cette mise à jour documentaire est postérieure à la version balisée ; elle ne modifie pas son README figé.
+- GitHub Pages est actif et le site est accessible à l’adresse indiquée en tête de ce README. Sur Cyberlearn, remettre les liens du dépôt et de l’application ainsi que le tag `jalon-1` avant le 20 novembre au soir ; l’heure exacte et le dépôt effectif du rendu restent à vérifier sur la plateforme. Aucune vidéo pour J1.
 - Le secret local n’est pas protégé contre l’inspection du navigateur. Recharger perd la partie. Les polices Google sont facultatives ; le fonctionnement hors ligne n’a pas été vérifié.
 - L’API interne n’est **pas annoncée conforme à l’API commune 0.2**. L’intégration sur la même partie que l’interface reste pour J2, ainsi que l’essai sur vrai smartphone. Pas de PWA ni d’extension à ce stade.
 
