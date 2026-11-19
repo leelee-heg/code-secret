@@ -8,7 +8,7 @@ Jeu solo réalisé pour le cours avec l’aide de Codex. Retrouvez quatre couleu
 
 ## État actuel
 
-Le jeu est publié sur GitHub Pages et la version de rendu est repérée sur GitHub par le tag `jalon-1`. L’accès au site, l’affichage initial de la version 0.1.0 et la présence du tag ont été vérifiés le **19 novembre 2026**. Les tests du moteur et les preuves de correction sont disponibles ci-dessous. Les parcours de jeu n’ont pas été rejoués sur le site publié lors de cette vérification. La remise Cyberlearn reste à effectuer. L’API commune 0.2 est hors du périmètre actuel.
+Le jeu est publié sur GitHub Pages et la version de rendu est repérée sur GitHub par le tag `jalon-1`. L’accès au site, l’affichage initial de la version 0.1.0 et la présence du tag ont été vérifiés le **19 novembre 2026**. Les tests du moteur et les preuves de correction sont disponibles ci-dessous. L’API commune 0.2 est hors du périmètre actuel.
 
 ## Jouer et comprendre les règles
 
@@ -83,20 +83,22 @@ Ces contrôles ne remplacent pas un essai sur vrai smartphone, un parcours clavi
 
 [Capture avant](docs/preuves/symboles-avant.png) · [Capture après](docs/preuves/symboles-apres.png). Les ressources portent `0.1.0` dans leur URL pour éviter les anciens scripts en cache après cette mise à jour ; modifier ce repère lors d’une prochaine livraison.
 
-## Limites, questions ouvertes et remise J1
+## Limites et suite du projet
 
-- Confirmer le nom « Code secret » et l’apparence proposée ; ce sont des choix libres.
-- Les guides AGENTS et README du cours (version 1.0 du 3 novembre 2026) ont été relus le 13 novembre : les consignes de travail restent dans `AGENTS.md`, tandis que l’usage, les résultats et les limites restent dans ce README. Cette mise à jour porte uniquement sur la documentation ; elle n’ajoute pas de nouveau résultat de test du jeu.
-- Relire la décision avec Codex et les preuves ; aucune conversation n’est à publier dans le dépôt.
-- Le dépôt cible est `leelee-heg/code-secret`. Les fichiers sont transférés par la connexion GitHub avec des commits d’import. Les SHA cités dans les preuves ci-dessus désignent les commits locaux d’origine ; leur transfert reste à effectuer.
-- Le 18 novembre, `origin` a été corrigé vers ce dépôt et les historiques ont été réunis localement. Le dernier essai d’envoi direct était bloqué par l’absence d’authentification HTTPS GitHub dans le terminal ; cet accès n’a pas été retesté ici.
-- Le tag GitHub `jalon-1` pointe vers `9f1d7c2`, tandis que le tag local du même nom pointe vers `05f7b67`. Pour consulter le rendu, utiliser le lien GitHub en tête de ce README. Aucun tag n’a été déplacé pendant cette mise à jour. Ne pas tenter d’envoyer le tag local par-dessus le tag distant. Cette mise à jour documentaire est postérieure à la version balisée ; elle ne modifie pas son README figé.
-- GitHub Pages est actif et le site est accessible à l’adresse indiquée en tête de ce README. Sur Cyberlearn, remettre les liens du dépôt et de l’application ainsi que le tag `jalon-1` avant le 20 novembre au soir ; l’heure exacte et le dépôt effectif du rendu restent à vérifier sur la plateforme. Aucune vidéo pour J1.
-- Le secret local n’est pas protégé contre l’inspection du navigateur. Recharger perd la partie. Les polices Google sont facultatives ; le fonctionnement hors ligne n’a pas été vérifié.
-- L’API interne n’est **pas annoncée conforme à l’API commune 0.2**. L’intégration sur la même partie que l’interface reste pour J2, ainsi que l’essai sur vrai smartphone. Pas de PWA ni d’extension à ce stade.
+Le secret est caché pendant la partie, mais reste accessible à une personne qui inspecte le navigateur. Recharger la page fait perdre la partie en cours.
+
+Le fonctionnement hors ligne, l’utilisation sur un vrai smartphone et un parcours clavier complet restent à vérifier. Les polices Google sont facultatives.
+
+L’intégration de l’API commune 0.2 est prévue pour le jalon 2 ; l’API interne actuelle n’est pas annoncée conforme à ce contrat.
+
+## Repères Git
+
+La version de rendu est le tag GitHub `jalon-1` (`9f1d7c2`), accessible par le lien en tête du README. Le tag local du même nom pointe vers `05f7b67` : ne pas l’envoyer par-dessus le tag distant. Les références de commits des preuves avant/après appartiennent à l’historique local. Les mises à jour documentaires suivantes ne modifient pas le contenu figé du tag.
 
 ## Aide et reprise
 
-Pour reprendre : lire ce README et [AGENTS.md](AGENTS.md), lancer les tests, puis reproduire le cas à changer. Le projet est maintenu dans le compte GitHub `leelee-heg`. Signaler un défaut ou proposer une amélioration dans les [issues du dépôt](https://github.com/leelee-heg/code-secret/issues), avec version ou commit, étapes, attendu et obtenu, sans donnée privée. Une contribution doit rester dans le périmètre demandé et décrire les vérifications effectuées.
+Pour reprendre le développement, lire ce README et les consignes de [AGENTS.md](AGENTS.md), puis lancer `node tests.cjs` depuis la racine du projet avec Node.js 24.
+
+Pour signaler un problème, ouvrir une [issue sur GitHub](https://github.com/leelee-heg/code-secret/issues) en précisant les étapes, le résultat attendu et le résultat obtenu.
 
 Autres supports consultés : [atelier du 11 novembre](https://docs.google.com/presentation/d/1Yi_XaAN5B_8kT8FrJXQ6rpPXLBk-8riz5rpyb55_Weo/edit), [guide README](https://docs.google.com/document/d/10FoB8lHkMB_Ys30Zcll1dFR_1TZ5nlNyhXRihrIIFjw/edit), [guide AGENTS](https://docs.google.com/document/d/1_epbOr-PrHMvFYcZaeLMDIjAmcKWd40ORtTX8Ia6_Sw/edit).
