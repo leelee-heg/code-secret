@@ -1,0 +1,24 @@
+Vérification de publication API 0.2 — 25 novembre 2026
+Commit GitHub : bb2cfe7c0a73ee8aabed054c004536ec098d34f1
+Arbre Git : 2260224b75f012998dcc3835802885fd0d0c75c5
+Cet arbre est identique à celui du commit local 45b5e33.
+Déploiement GitHub Pages : workflow 45597523101, completed / success.
+Page contrôlée : https://leelee-heg.github.io/code-secret/tests-api.html
+Environnement : navigateur intégré, accès HTTPS au site publié.
+
+Résultat affiché : SUCCÈS : API et interface synchronisées.
+
+18 groupes API réussis, dont les neuf exemples T01 à T09 du contrat.
+Mode normal : codeSecretTest absent, partie immédiatement jouable.
+Mode test avec un autre paramètre URL : état initial not-started.
+Proposition UI incomplète refusée sans consommation d’essai.
+Proposition UI relue dans getState : 1 bien placée / 2 mal placées.
+Proposition API affichée dans le compteur et l’historique.
+Refus expliqué à l’écran ; démarrage invalide sans modification de l’interface.
+Nouvelle partie UI : état partagé remis à zéro.
+Défaite : dix essais, validation bloquée, code non révélé en mode test.
+Victoire : message visible et validation bloquée.
+Aucun débordement horizontal mesuré à 390 et 320 px.
+
+Non vérifié : outil enseignant, vrai smartphone, audit d’accessibilité complet,
+fonctionnement hors ligne et contexte neuf avec caches explicitement vidés.

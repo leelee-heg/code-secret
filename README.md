@@ -1,14 +1,15 @@
 # Code secret · Mastermind
 
-Jeu solo réalisé pour le cours avec l’aide de Codex. Retrouvez quatre couleurs cachées en dix essais. Version locale **0.2.0**, avec l’API commune 0.2 pour le jalon 2. La version du jalon 1 reste conservée par le tag ci-dessous.
+Jeu solo réalisé pour le cours avec l’aide de Codex. Retrouvez quatre couleurs cachées en dix essais. Version **0.2.0**, avec l’API commune 0.2 pour le jalon 2. La version du jalon 1 reste conservée par le tag ci-dessous.
 
 - [Dépôt GitHub](https://github.com/leelee-heg/code-secret)
-- [Application publiée sur GitHub Pages](https://leelee-heg.github.io/code-secret/) (l’intégration API 0.2 reste à publier et à vérifier en ligne).
+- [Application publiée sur GitHub Pages](https://leelee-heg.github.io/code-secret/).
+- [Application en mode test API 0.2](https://leelee-heg.github.io/code-secret/?test=1).
 - [Version de rendu J1 : tag GitHub `jalon-1`](https://github.com/leelee-heg/code-secret/tree/jalon-1), commit `9f1d7c2`.
 
 ## État actuel
 
-La version J1 a été publiée sur GitHub Pages : son accès et le tag ont été vérifiés le **19 novembre 2026**. Le **25 novembre**, l’API commune 0.2 a été intégrée et vérifiée localement sur la même partie que l’interface. La publication de cette nouvelle version et sa vérification depuis GitHub Pages restent à effectuer. Les résultats locaux et leurs limites sont détaillés ci-dessous.
+La version J1 reste repérée par son tag. Le **25 novembre 2026**, l’API commune 0.2 a été intégrée, vérifiée localement, puis publiée sur GitHub Pages. Les contrôles API et interface ont aussi réussi en ligne sur le commit `bb2cfe7`. Les résultats et leurs limites sont détaillés ci-dessous.
 
 ## Jouer et comprendre les règles
 
@@ -132,6 +133,10 @@ Ouvrir `http://127.0.0.1:8000/tests-api.html`, attendre « Prêt », puis clique
 
 Les contrôles du navigateur ont été exécutés dans le navigateur intégré, après rechargement de la page locale. Leur relevé est conservé dans [api-0.2-navigateur.txt](docs/preuves/api-0.2-navigateur.txt). Ils vérifient une seule véritable partie visible, et non un moteur de démonstration séparé.
 
+### Vérification sur GitHub Pages le 25 novembre 2026
+
+Le déploiement du commit `bb2cfe7` a réussi. Le même banc de contrôle, ouvert depuis [tests-api.html publié](https://leelee-heg.github.io/code-secret/tests-api.html), a affiché « SUCCÈS : API et interface synchronisées. » Les 18 groupes API passent en ligne, ainsi que les échanges API/interface, les refus, les fins de partie, le code caché en mode test et les contrôles de largeur. L’API est présente avec `test=1` et absente en mode normal. Le relevé est conservé dans [api-0.2-publication.txt](docs/preuves/api-0.2-publication.txt).
+
 ## Une correction expliquée
 
 **Avant** (`a7b1e6c`, preuve enregistrée dans `0fd7f2e`) : choisir vert–violet–vert–violet et valider affichait **V V V V** dans l’historique. Impossible de distinguer ces deux couleurs par leur symbole seul.
@@ -146,7 +151,7 @@ Le secret est caché pendant la partie, mais reste accessible à une personne qu
 
 Le fonctionnement hors ligne, l’utilisation sur un vrai smartphone et un parcours clavier complet restent à vérifier. Les polices Google sont facultatives.
 
-L’API 0.2 a été vérifiée localement avec les contrôles décrits ci-dessus. Restent à vérifier : la version publiée avec et sans `?test=1`, son comportement depuis un contexte neuf sans ancien cache, et l’outil de test de l’enseignant, qui n’a pas été fourni. Le tag `jalon-1` n’est pas une version de cette API ; il reste inchangé. Aucun résultat de conformité à un outil non exécuté n’est revendiqué.
+L’API 0.2 a été vérifiée localement et sur GitHub Pages avec les contrôles décrits ci-dessus. Restent à vérifier : son comportement depuis un contexte neuf avec caches explicitement vidés, et l’outil de test de l’enseignant, qui n’a pas été fourni. Le tag `jalon-1` n’est pas une version de cette API ; il reste inchangé. Aucun résultat de conformité à un outil non exécuté n’est revendiqué.
 
 ## Repères Git
 
