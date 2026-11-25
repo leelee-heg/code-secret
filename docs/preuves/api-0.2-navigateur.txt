@@ -1,0 +1,36 @@
+Contrôles locaux API 0.2 — 25 novembre 2026
+Environnement : navigateur intégré, serveur Python 127.0.0.1:8000.
+Base avant intégration : c188f3b ; application après intégration : 0.2.0.
+Page : tests-api.html, rechargée avant l’exécution.
+
+Résultat affiché : SUCCÈS : API et interface synchronisées.
+
+18 groupes API réussis : configuration et état initial ; refus avant démarrage ;
+démarrages invalides atomiques ; copie du secret ; T01 à T09 ; refus de saisie ;
+copies indépendantes ; victoire au dixième après refus à neuf ; défaite et
+redémarrage ; démarrages aléatoires sans argument, undefined et objet vide.
+
+Contrôles d’intégration réussis :
+- Mode normal sans codeSecretTest, partie immédiatement jouable.
+- Mode test avec un autre paramètre URL : état initial not-started.
+- Compteur, propositions, indices, validation et code caché comparés après les
+  mutations réussies du banc de test (y compris les refus submitGuess).
+- Proposition UI incomplète : refus sans consommation d’essai.
+- Proposition UI rouge-bleu-rouge-rouge, secret rouge-rouge-bleu-vert : 1/2.
+- Proposition API : même historique et même compteur visibles.
+- Refus API expliqué à l’écran.
+- Démarrage invalide : état et contenu de l’interface inchangés.
+- Nouvelle partie UI : état, erreur et sélecteurs remis à zéro.
+- Défaite : dix lignes, validation désactivée, code non révélé.
+- Victoire : message visible, validation désactivée.
+- Aucun débordement horizontal mesuré à 390 et 320 px.
+
+Contrôle clavier manuel après le banc de test :
+- Nouvelle partie, puis sélection rouge, bleu, vert, jaune par les touches
+  r, b, v, j, déplacement avec Tab et validation par Entrée.
+- Résultat observé : compteur 1/10, une ligne rouge-bleu-vert-jaune,
+  0 bien placée et 1 mal placée pour ce secret aléatoire.
+  Ces indices particuliers ne sont pas un résultat fixe à attendre.
+
+Non vérifié : publication de 0.2.0, outil enseignant, vrai smartphone,
+audit d’accessibilité complet, fonctionnement hors ligne.

@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vérification API 0.2</title></head>
+<body>
+  <h1>Vérification API 0.2</h1>
+  <p>Les contrôles agissent sur le véritable jeu ci-dessous. Recharger cette page avant de les relancer.</p>
+  <button id="run" disabled>Lancer les contrôles</button>
+  <pre id="output" role="status" aria-live="polite">Chargement des deux modes…</pre>
+  <iframe id="test-game" src="index.html?autre=conserve&amp;test=1" title="Jeu en mode test" style="width:100%;height:900px;border:1px solid #888"></iframe>
+  <iframe id="normal-game" src="index.html" title="Jeu normal" hidden></iframe>
+  <script src="api-checks.js"></script>
+  <script src="tests-browser.js"></script>
+</body>
+</html>

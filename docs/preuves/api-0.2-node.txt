@@ -1,0 +1,20 @@
+Tous les tests passent, dont 6 561 paires de combinaisons.
+OK API : État initial, configuration et getters sans effet
+OK API : Refus avant démarrage, prioritaire sur le type
+OK API : Démarrages invalides atomiques et priorités
+OK API : Démarrage imposé, copie du secret et absence de révélation
+OK API : T01 : indices et historique
+OK API : T02 : indices et historique
+OK API : T03 : indices et historique
+OK API : T04 : indices et historique
+OK API : T05 : indices et historique
+OK API : T06 : indices et historique
+OK API : T07 : indices et historique
+OK API : T08 : indices et historique
+OK API : T09 : indices et historique
+OK API : Refus de saisie : type, longueur, couleur et priorités
+OK API : Copies indépendantes des propositions, états et indices
+OK API : Refus à neuf essais puis victoire au dixième
+OK API : Redémarrage après victoire et défaite après dix erreurs
+OK API : Redémarrage aléatoire : sans argument, undefined et objet vide
+18 groupes de contrôles API 0.2 réussis.

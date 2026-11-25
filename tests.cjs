@@ -42,3 +42,9 @@ before = JSON.stringify(game.etat());
 assert.equal(game.proposer([r,r,b,v]).ok, false);
 assert.equal(JSON.stringify(game.etat()), before);
 console.log('Tous les tests passent, dont 6 561 paires de combinaisons.');
+require('./api.js');
+require('./api-checks.js');
+const session = globalThis.CodeSecretSession.createSession({testMode:true});
+globalThis.runCodeSecretChecks(session.api, name => console.log('OK API : ' + name))
+  .then(count => console.log(`${count} groupes de contrôles API 0.2 réussis.`))
+  .catch(error => { console.error(error); process.exitCode = 1; });

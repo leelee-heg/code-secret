@@ -29,18 +29,18 @@
     do { root.crypto.getRandomValues(buffer); } while (buffer[0] >= 4294967292);
     return palette[buffer[0] % 6];
   }
-  function createGame(pickColor = randomColor) {
-    let secret, history, status;
+  function createGame(pickColor = randomColor, { autoStart = true, revealSolution = true } = {}) {
+    let secret, history = [], status = 'non_demarree';
     function snapshot() {
       return {
         reference, palette: [...palette], status, essais: history.length,
         restants: 10 - history.length,
         historique: history.map(row => ({ proposition: [...row.proposition], ...row.indice })),
-        solution: status === 'en_cours' ? null : [...secret]
+        solution: revealSolution && (status === 'gagnee' || status === 'perdue') ? [...secret] : null
       };
     }
-    function nouvellePartie() {
-      const next = Array.from({ length: 4 }, () => pickColor());
+    function nouvellePartie(imposedSecret) {
+      const next = arguments.length ? [...imposedSecret] : Array.from({ length: 4 }, () => pickColor());
       if (validate(next)) throw new Error('Générateur de couleurs invalide.');
       secret = next; history = []; status = 'en_cours';
       return snapshot();
@@ -55,7 +55,7 @@
       else if (history.length === 10) status = 'perdue';
       return { ok: true, partie: snapshot() };
     }
-    nouvellePartie();
+    if (autoStart) nouvellePartie();
     return Object.freeze({ etat: snapshot, proposer, nouvellePartie });
   }
   root.CodeCouleurs = Object.freeze({ reference, palette, createGame });
