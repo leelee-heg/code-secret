@@ -62,7 +62,7 @@
     $('result').hidden = !ended && !state.lastResult && state.status !== 'not-started';
     if (state.status === 'not-started') $('result').textContent = 'Mode test : cliquez sur « Nouvelle partie » ou appelez startGame pour commencer.';
     else if (ended) $('result').textContent = state.status === 'won' ? `Code percé ! Bravo, vous avez gagné en ${state.attempts} essai${state.attempts > 1 ? 's' : ''}.` : `Les dix essais sont écoulés. ${state.solution ? 'Le code est révélé ci-dessus. ' : ''}Une nouvelle partie ?`;
-    else if (state.lastResult) $('result').textContent = `Essai ${state.attempts} : ${state.lastResult.wellPlaced} bien placées, ${state.lastResult.misplaced} mal placées.`;
+    else if (state.lastResult) $('result').textContent = `Essai ${state.attempts} : ${state.lastResult.wellPlaced} bien placée${state.lastResult.wellPlaced > 1 ? 's' : ''}, ${state.lastResult.misplaced} mal placée${state.lastResult.misplaced > 1 ? 's' : ''}.`;
   }
   $('guess-form').addEventListener('submit', async event => {
     event.preventDefault();

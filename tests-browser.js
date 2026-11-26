@@ -83,6 +83,15 @@
         log('Interface sans débordement horizontal à '+width+'px');
       }
       frame.style.width='100%';
+      for (const [secret, guess, expected] of [
+        [['rouge','rouge','rouge','rouge'], ['bleu','bleu','bleu','bleu'], 'Essai 1 : 0 bien placée, 0 mal placée.'],
+        [['rouge','rouge','bleu','vert'], ['rouge','bleu','rouge','vert'], 'Essai 1 : 2 bien placées, 2 mal placées.'],
+        [['rouge','bleu','vert','jaune'], ['rouge','orange','orange','bleu'], 'Essai 1 : 1 bien placée, 1 mal placée.']
+      ]) {
+        await api.startGame({secret}); await api.submitGuess(guess);
+        assert(doc.getElementById('result').textContent === expected, 'Accord incorrect : '+doc.getElementById('result').textContent);
+      }
+      log('Accords du résumé vérifiés pour 0/0, 2/2 et 1/1');
       output.textContent += '\nSUCCÈS : API et interface synchronisées.\n';
     } catch (error) { output.textContent += '\nÉCHEC : ' + error.stack; }
   });

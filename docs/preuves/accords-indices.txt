@@ -1,0 +1,23 @@
+Accords du résumé des indices — 26 novembre 2026
+Version avant : commit local da86e5d.
+
+Avant, sur le site publié à 412 px :
+- Proposition bleu-orange-jaune-vert, répétée dans une même partie.
+- Résumé : « Essai 5 : 1 bien placées, 1 mal placées. »
+- Historique : « 1 bien placée » et « 1 mal placée ».
+
+Reproduction locale avant correction avec le nouveau contrôle navigateur :
+- Secret rouge-rouge-rouge-rouge ; proposition bleu-bleu-bleu-bleu.
+- ÉCHEC : Accord incorrect : Essai 1 : 0 bien placées, 0 mal placées.
+
+Après correction, banc tests-api.html sur 127.0.0.1:8001 sans l’ancienne
+page en cache :
+- 0/0 : « Essai 1 : 0 bien placée, 0 mal placée. »
+- 2/2 : « Essai 1 : 2 bien placées, 2 mal placées. »
+- 1/1 : « Essai 1 : 1 bien placée, 1 mal placée. »
+- Pour 1/1 : secret rouge-bleu-vert-jaune, proposition rouge-orange-orange-bleu.
+- Les 18 groupes API et les contrôles d’intégration restent réussis.
+- Résultat affiché : SUCCÈS : API et interface synchronisées.
+
+Limite de cette preuve : vérification locale. Le déploiement GitHub Pages
+doit encore être contrôlé après l’envoi du commit.

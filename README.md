@@ -145,6 +145,12 @@ Le déploiement du commit `bb2cfe7` a réussi. Le même banc de contrôle, ouver
 
 [Capture avant](docs/preuves/symboles-avant.png) · [Capture après](docs/preuves/symboles-apres.png). Les ressources portent `0.1.0` dans leur URL pour éviter les anciens scripts en cache après cette mise à jour ; modifier ce repère lors d’une prochaine livraison.
 
+### Accords du résumé des indices — 26 novembre 2026
+
+Avant correction (version locale `da86e5d`), un résultat 1/1 affichait « 1 bien placées, 1 mal placées » dans le résumé, alors que l’historique utilisait le singulier. Le défaut a été reproduit ; un contrôle ajouté au banc navigateur échouait également pour 0/0.
+
+La correction reprend dans le résumé la règle d’accord déjà utilisée par l’historique : « placée » pour 0 et 1, « placées » à partir de 2. Après rechargement sur une adresse locale sans l’ancienne page en cache, les cas 0/0, 2/2 et 1/1 ainsi que les contrôles API/interface ont réussi. Pour 1/1, le secret rouge–bleu–vert–jaune et la proposition rouge–orange–orange–bleu affichent exactement « Essai 1 : 1 bien placée, 1 mal placée. » Le repère de chargement de `game.js` est actualisé pour éviter un ancien script en cache. Cette correction ne change pas le calcul des indices. Voir le [relevé avant/après](docs/preuves/accords-indices.txt).
+
 ## Limites et suite du projet
 
 Le secret est caché pendant la partie, mais reste accessible à une personne qui inspecte le navigateur. Recharger la page fait perdre la partie en cours.
