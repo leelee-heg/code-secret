@@ -4,10 +4,16 @@
   const normal = document.getElementById('normal-game');
   const button = document.getElementById('run');
   const output = document.getElementById('output');
-  let loaded = 0;
-  for (const iframe of [frame, normal]) iframe.addEventListener('load', () => {
-    if (++loaded === 2) { button.disabled = false; output.textContent = 'Prêt.'; }
-  });
+  const loaded = new Set();
+  function ready(iframe) {
+    if (iframe.contentDocument?.readyState !== 'complete' || !iframe.contentDocument.getElementById('history-count')) return;
+    loaded.add(iframe);
+    if (loaded.size === 2) { button.disabled = false; output.textContent = 'Prêt.'; }
+  }
+  for (const iframe of [frame, normal]) {
+    iframe.addEventListener('load', () => ready(iframe));
+    ready(iframe);
+  }
   button.addEventListener('click', async () => {
     button.disabled = true; output.textContent = '';
     const doc = frame.contentDocument, api = frame.contentWindow.codeSecretTest;

@@ -25,6 +25,17 @@ Navigateur intégré, serveur local 127.0.0.1:8002 :
   véritable service worker actif, cache versionné trouvé et ressources présentes.
 - tests-api.html : tous les contrôles API/interface et accords réussis avec la PWA.
 
+Sur le site public, commit 194722d :
+- Le lien ?installer=1 ouvre le guide avec les trois familles d’appareils.
+- tests-pwa.html : manifeste et PNG disponibles, worker réellement actif,
+  cache versionné contenant les ressources du jeu et le QR code.
+- Résultat : SUCCÈS : ressources PWA prêtes.
+- Le banc API public est resté en attente au chargement de ses cadres.
+  Son initialisation a été rendue indépendante du seul événement load :
+  elle prend aussi en compte les documents déjà complètement chargés.
+  Après cet ajustement, le banc local avec worker actif est passé à Prêt,
+  puis tous les contrôles API/interface et accords ont réussi.
+
 Limites : absence d’installation native sur téléphone ou ordinateur,
 pas de rechargement réel en mode avion, pas de validation physique du QR,
 pas de test de mise à jour entre deux versions installées ni d’audit d’accessibilité.

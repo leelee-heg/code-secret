@@ -14,6 +14,8 @@ La version J1 reste repérée par son tag. Le **25 novembre 2026**, l’API comm
 
 La version 0.3.0 ajoute le nom et l’icône d’installation **Code secret**, le guide d’installation, un QR code et un cache hors connexion. Elle conserve le même moteur et la même API. Les tests PWA du 26 novembre sont décrits ci-dessous ; l’installation native sur appareil reste à confirmer.
 
+Le lien du QR, le manifeste, les icônes et le véritable cache ont également été vérifiés sur GitHub Pages après publication de cette version (`194722d`).
+
 ## Installer sur téléphone ou ordinateur
 
 Ouvrir l’application en HTTPS, puis choisir **« Installer l’application »**. Le guide présente les étapes adaptées aux différents navigateurs. Lorsque Chrome ou Edge transmet une invitation d’installation au jeu, un bouton **« Installer sur cet appareil »** permet d’ouvrir la confirmation native. L’installation reste un choix de la personne qui joue.
@@ -194,7 +196,9 @@ Avec le serveur local décrit ci-dessus, ouvrir `tests-pwa.html` et cliquer sur 
 | Affichage du guide à 412 px | Aucun débordement horizontal mesuré, contenu accessible par défilement |
 | Contrôles API/interface et accords après ajout PWA | Réussis dans le navigateur intégré |
 
-Le [relevé PWA](docs/preuves/pwa-0.3.0.txt) distingue les observations réelles des simulations. La génération et le décodage du QR ont utilisé qrcode, Pillow et zxing-cpp uniquement comme outils de développement ; les images livrées sont statiques. La régénération n’est requise ni pour jouer ni pour déployer.
+Le [relevé PWA](docs/preuves/pwa-0.3.0.txt) distingue les observations réelles des simulations. Sur GitHub Pages, `tests-pwa.html` a aussi confirmé les icônes, le worker actif et les ressources du cache. Le banc API prend en compte les cadres déjà chargés avant l’attachement de ses écouteurs ; cet ajustement évite de dépendre uniquement d’un futur événement de chargement lorsque les pages sont en cache. Il a été revérifié localement avec le worker actif.
+
+La génération et le décodage du QR ont utilisé qrcode, Pillow et zxing-cpp uniquement comme outils de développement ; les images livrées sont statiques. La régénération n’est requise ni pour jouer ni pour déployer.
 
 Pour vérifier sur un appareil réel : installer depuis le site public, contrôler le nom et l’icône sur l’écran d’accueil ou le Dock, ouvrir l’icône, attendre la préparation hors connexion, fermer le jeu, activer le mode avion puis rouvrir et jouer un coup. Tester ensuite une mise à jour avec une partie déjà ouverte. Ces essais natifs n’ont pas été réalisés par Codex ; le retour Pixel 8/Chrome ci-dessus concernait le jeu avant l’ajout de la PWA.
 
