@@ -196,7 +196,7 @@ Avec le serveur local décrit ci-dessus, ouvrir `tests-pwa.html` et cliquer sur 
 | Affichage du guide à 412 px | Aucun débordement horizontal mesuré, contenu accessible par défilement |
 | Contrôles API/interface et accords après ajout PWA | Réussis dans le navigateur intégré |
 
-Le [relevé PWA](docs/preuves/pwa-0.3.0.txt) distingue les observations réelles des simulations. Sur GitHub Pages, `tests-pwa.html` a aussi confirmé les icônes, le worker actif et les ressources du cache. Le banc API prend en compte les cadres déjà chargés avant l’attachement de ses écouteurs ; cet ajustement évite de dépendre uniquement d’un futur événement de chargement lorsque les pages sont en cache. Il a été revérifié localement avec le worker actif.
+Le [relevé PWA](docs/preuves/pwa-0.3.0.txt) distingue les observations réelles des simulations. Sur GitHub Pages, `tests-pwa.html` a aussi confirmé les icônes, le worker actif et les ressources du cache. Le banc API prend en compte les cadres déjà chargés avant l’attachement de ses écouteurs ; cet ajustement évite de dépendre uniquement d’un futur événement de chargement lorsque les pages sont en cache. Il a été revérifié localement puis sur GitHub Pages avec le worker actif : les 18 groupes API, l’interface et les accords ont réussi.
 
 La génération et le décodage du QR ont utilisé qrcode, Pillow et zxing-cpp uniquement comme outils de développement ; les images livrées sont statiques. La régénération n’est requise ni pour jouer ni pour déployer.
 

@@ -35,6 +35,9 @@ Sur le site public, commit 194722d :
   elle prend aussi en compte les documents déjà complètement chargés.
   Après cet ajustement, le banc local avec worker actif est passé à Prêt,
   puis tous les contrôles API/interface et accords ont réussi.
+- Après publication de l’ajustement (1c33bb7), le banc API en ligne a affiché
+  Prêt, puis SUCCÈS : API et interface synchronisées. Les 18 groupes API,
+  les échanges UI/API, les accords et les largeurs 320/390 px ont réussi.
 
 Limites : absence d’installation native sur téléphone ou ordinateur,
 pas de rechargement réel en mode avion, pas de validation physique du QR,
