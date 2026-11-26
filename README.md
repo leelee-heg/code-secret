@@ -137,6 +137,15 @@ Les contrôles du navigateur ont été exécutés dans le navigateur intégré, 
 
 Le déploiement du commit `bb2cfe7` a réussi. Le même banc de contrôle, ouvert depuis [tests-api.html publié](https://leelee-heg.github.io/code-secret/tests-api.html), a affiché « SUCCÈS : API et interface synchronisées. » Les 18 groupes API passent en ligne, ainsi que les échanges API/interface, les refus, les fins de partie, le code caché en mode test et les contrôles de largeur. L’API est présente avec `test=1` et absente en mode normal. Le relevé est conservé dans [api-0.2-publication.txt](docs/preuves/api-0.2-publication.txt).
 
+### Tests sur mobile et à largeur réduite — relevé du 26 novembre 2026
+
+| Appareil ou configuration | Navigateur | Résultat et origine du constat |
+| --- | --- | --- |
+| Google Pixel 8, appareil physique | Chrome | Le jeu fonctionnait correctement, selon le retour de la personne ayant réalisé ce test sur son téléphone. |
+| Fenêtre réglée à 412 px, sans téléphone physique | Navigateur intégré à Codex | Sélecteurs modifiables avant validation ; compteur passé de 4/10 à 5/10 ; cinquième ligne ajoutée sans perte de l’historique ; mêmes indices 1/1 pour la même proposition ; aucun débordement horizontal mesuré. Un défaut d’accord du résumé a été repéré, puis corrigé comme décrit ci-dessous. |
+
+Le test sur Pixel 8 est un retour d’utilisation, distinct du contrôle effectué par Codex à 412 px. Les versions de Chrome et d’Android ainsi que les étapes détaillées de l’essai sur téléphone n’ont pas été consignées ; ce retour ne constitue pas un test exhaustif de l’API ou de tous les navigateurs mobiles.
+
 ## Une correction expliquée
 
 **Avant** (`a7b1e6c`, preuve enregistrée dans `0fd7f2e`) : choisir vert–violet–vert–violet et valider affichait **V V V V** dans l’historique. Impossible de distinguer ces deux couleurs par leur symbole seul.
@@ -155,7 +164,7 @@ La correction reprend dans le résumé la règle d’accord déjà utilisée par
 
 Le secret est caché pendant la partie, mais reste accessible à une personne qui inspecte le navigateur. Recharger la page fait perdre la partie en cours.
 
-Le fonctionnement hors ligne, l’utilisation sur un vrai smartphone et un parcours clavier complet restent à vérifier. Les polices Google sont facultatives.
+Le fonctionnement hors ligne et un parcours clavier complet restent à vérifier. Un fonctionnement correct a été rapporté sur Pixel 8 avec Chrome ; les autres appareils et navigateurs mobiles ne sont pas couverts par ce retour. Les polices Google sont facultatives.
 
 L’API 0.2 a été vérifiée localement et sur GitHub Pages avec les contrôles décrits ci-dessus. Restent à vérifier : son comportement depuis un contexte neuf avec caches explicitement vidés, et l’outil de test de l’enseignant, qui n’a pas été fourni. Le tag `jalon-1` n’est pas une version de cette API ; il reste inchangé. Aucun résultat de conformité à un outil non exécuté n’est revendiqué.
 
