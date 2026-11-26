@@ -12,7 +12,7 @@ Jeu solo réalisé pour le cours avec l’aide de Codex. Retrouvez quatre couleu
 
 La version J1 reste repérée par son tag. Le **25 novembre 2026**, l’API commune 0.2 a été intégrée, vérifiée localement, puis publiée sur GitHub Pages. Les contrôles API et interface ont aussi réussi en ligne sur le commit `bb2cfe7`. Les résultats et leurs limites sont détaillés ci-dessous.
 
-La version 0.3.0 ajoute le nom et l’icône d’installation **Code secret**, le guide d’installation, un QR code et un cache hors connexion. Elle conserve le même moteur et la même API. Les tests PWA du 26 novembre sont décrits ci-dessous ; l’installation native sur appareil reste à confirmer.
+La version 0.3.0 ajoute le nom et l’icône d’installation **Code secret**, le guide d’installation, un QR code et un cache hors connexion. Elle conserve le même moteur et la même API. Les tests PWA du 26 novembre sont décrits ci-dessous. Un fonctionnement correct sur smartphone, après scan du QR et ouverture depuis l’icône, a été rapporté avec et sans mode avion ; l’installation sur ordinateur reste à confirmer.
 
 Le lien du QR, le manifeste, les icônes et le véritable cache ont également été vérifiés sur GitHub Pages après publication de cette version (`194722d`).
 
@@ -200,7 +200,20 @@ Le [relevé PWA](docs/preuves/pwa-0.3.0.txt) distingue les observations réelles
 
 La génération et le décodage du QR ont utilisé qrcode, Pillow et zxing-cpp uniquement comme outils de développement ; les images livrées sont statiques. La régénération n’est requise ni pour jouer ni pour déployer.
 
-Pour vérifier sur un appareil réel : installer depuis le site public, contrôler le nom et l’icône sur l’écran d’accueil ou le Dock, ouvrir l’icône, attendre la préparation hors connexion, fermer le jeu, activer le mode avion puis rouvrir et jouer un coup. Tester ensuite une mise à jour avec une partie déjà ouverte. Ces essais natifs n’ont pas été réalisés par Codex ; le retour Pixel 8/Chrome ci-dessus concernait le jeu avant l’ajout de la PWA.
+Pour vérifier sur un autre appareil réel : installer depuis le site public, contrôler le nom et l’icône sur l’écran d’accueil ou le Dock, ouvrir l’icône, attendre la préparation hors connexion, fermer le jeu, activer le mode avion puis rouvrir et jouer un coup. Tester ensuite une mise à jour avec une partie déjà ouverte. L’installation sur ordinateur et le comportement d’une mise à jour avec une partie ouverte restent à confirmer.
+
+### Essai PWA sur smartphone — retour du 26 novembre 2026
+
+Sur le smartphone déjà indiqué, **Google Pixel 8 avec Chrome**, la personne ayant effectué le test rapporte les résultats suivants après l’ajout de la PWA :
+
+| Action réalisée | Résultat observé et rapporté |
+| --- | --- |
+| Scanner le QR code avec le smartphone | Le jeu s’ouvre correctement. |
+| Ouvrir le jeu depuis son icône sur le smartphone | Le lancement fonctionne correctement. |
+| Jouer sans activer le mode avion | Le jeu fonctionne correctement. |
+| Activer le mode avion et tester le jeu | Le jeu fonctionne correctement également. |
+
+Cet essai sur appareil physique est un retour utilisateur, distinct des contrôles automatisés et de la fenêtre à 412 px utilisés par Codex. Aucun problème n’a été signalé pendant ce parcours. Les versions de Chrome et d’Android et le détail des coups joués n’ont pas été consignés ; ce résultat ne valide pas tous les appareils, tous les navigateurs ou tous les scénarios de mise à jour.
 
 Sources techniques consultées pour cette étape : [installation PWA (MDN)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable), [invitation d’installation (MDN)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/How_to/Trigger_install_prompt), [identité du manifeste (MDN)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest/Reference/id), [cycle de vie du service worker (web.dev)](https://web.dev/articles/service-worker-lifecycle) et [ajout à l’écran d’accueil sur iPhone (Apple)](https://support.apple.com/guide/iphone/bookmark-a-website-iph42ab2f3a7/ios).
 
@@ -222,7 +235,7 @@ La correction reprend dans le résumé la règle d’accord déjà utilisée par
 
 Le secret est caché pendant la partie, mais reste accessible à une personne qui inspecte le navigateur. Recharger la page fait perdre la partie en cours.
 
-Le rechargement et le jeu réellement sans réseau, l’installation native sur smartphone/ordinateur et un parcours clavier complet restent à vérifier sur appareil. Le cache réel et le repli hors ligne simulé ont été contrôlés séparément. Un fonctionnement correct du jeu avant ajout PWA a été rapporté sur Pixel 8 avec Chrome ; ce retour ne valide pas son installation ni les autres appareils et navigateurs mobiles.
+L’ouverture depuis l’icône et le jeu avec et sans mode avion ont été rapportés comme fonctionnels sur Pixel 8 avec Chrome après l’ajout de la PWA. L’installation sur ordinateur, les autres appareils et navigateurs, une mise à jour avec une partie ouverte et un parcours clavier complet restent à vérifier. Le cache réel et le repli hors ligne simulé ont été contrôlés séparément par Codex ; ils ne sont pas confondus avec ce retour sur smartphone.
 
 L’API 0.2 a été vérifiée localement et sur GitHub Pages avec les contrôles décrits ci-dessus. Restent à vérifier : son comportement depuis un contexte neuf avec caches explicitement vidés, et l’outil de test de l’enseignant, qui n’a pas été fourni. Le tag `jalon-1` n’est pas une version de cette API ; il reste inchangé. Aucun résultat de conformité à un outil non exécuté n’est revendiqué.
 
