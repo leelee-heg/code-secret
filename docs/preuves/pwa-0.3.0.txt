@@ -1,0 +1,32 @@
+PWA Code secret 0.3.0 — 26 novembre 2026
+
+Fichiers contrôlés : manifeste, icônes PNG et SVG, QR code, pwa.js et sw.js.
+Nom d’installation : Code secret.
+QR décodé avec zxing-cpp après génération avec qrcode :
+https://leelee-heg.github.io/code-secret/?installer=1
+PNG du QR : 492 x 492 px, noir sur blanc, marge de quatre modules.
+Icônes PNG : 192 x 192, 512 x 512, maskable 512 x 512, Apple 180 x 180.
+
+Commandes : node tests.cjs ; node tests-pwa.cjs.
+Résultats : 6 561 paires de combinaisons, 18 groupes API et contrôles PWA réussis.
+Tests PWA Node : repli hors ligne et invitation d’installation simulés,
+configuration et fichiers réels vérifiés. Pas d’installation native réalisée.
+
+Navigateur intégré, serveur local 127.0.0.1:8002 :
+- ?installer=1 ouvre automatiquement le guide.
+- Instructions Android, iPhone/iPad et ordinateur présentes.
+- Icône et QR visibles, liens d’ouverture et téléchargement présents.
+- Échap ferme le guide ; le bouton le rouvre.
+- Une proposition rouge-bleu-vert-jaune a été validée : 1 essai, historique visible.
+- Ouvrir et fermer le guide conserve la partie et ses sélecteurs.
+- Largeur 412 px : document 397 px, contenu 397 px (barre de défilement 15 px).
+- Dialogue : scrollWidth 346 px et clientWidth 346 px ; pas de débordement horizontal.
+- tests-pwa.html : manifeste lu, trois PNG décodés aux bonnes dimensions,
+  véritable service worker actif, cache versionné trouvé et ressources présentes.
+- tests-api.html : tous les contrôles API/interface et accords réussis avec la PWA.
+
+Limites : absence d’installation native sur téléphone ou ordinateur,
+pas de rechargement réel en mode avion, pas de validation physique du QR,
+pas de test de mise à jour entre deux versions installées ni d’audit d’accessibilité.
+L’événement natif d’installation a été simulé dans Node ; il n’a pas été observé
+dans le navigateur intégré, où le guide manuel reste disponible.

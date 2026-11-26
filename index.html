@@ -3,17 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="application-version" content="0.2.0">
+  <meta name="application-version" content="0.3.0">
+  <meta name="theme-color" content="#285c45">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Code secret">
+  <meta name="mobile-web-app-capable" content="yes">
   <title>Code secret — Jeu de couleurs</title>
-  <link rel="stylesheet" href="style.css?v=0.2.0">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css?v=0.3.0">
   <script src="engine.js?v=0.2.0" defer></script>
   <script src="api.js?v=0.2.0" defer></script>
   <script src="game.js?v=0.2.0-accords" defer></script>
+  <script src="pwa.js?v=0.3.0" defer></script>
 </head>
 <body>
   <main>
     <header><a href="./index.html" class="brand"><span class="brand-mark" aria-hidden="true">◈</span> Code secret</a><span class="tag">LE JEU SOLO</span></header>
     <section class="intro"><p class="eyebrow">UN PEU DE LOGIQUE. SIX COULEURS.</p><h1>À vous de<br>percer le code<span>.</span></h1><p>Quatre couleurs cachées, dix essais pour les retrouver.<br>Chaque proposition vous rapproche du secret.</p></section>
+    <section id="installation" class="install-panel" aria-label="Installer Code secret">
+      <img src="assets/icon-192.png" width="48" height="48" alt="" class="install-icon">
+      <div><h2>Votre jeu, sur l’écran d’accueil.</h2><p id="offline-status" role="status">Installez Code secret sur votre téléphone ou votre ordinateur.</p></div>
+      <button id="install-open" type="button" class="secondary" aria-haspopup="dialog">Installer l’application</button>
+    </section>
     <div class="layout">
       <section class="board" aria-label="Partie de Code secret">
         <div class="board-top"><div><p class="eyebrow">LA COMBINAISON SECRÈTE</p><div id="secret" class="secret" aria-label="Quatre couleurs cachées"></div></div><button id="restart" type="button" class="secondary">↻ Nouvelle partie</button></div>
@@ -35,7 +48,23 @@
         <p class="small-note">Un code fixe par partie.<br>Une victoire dès 4 couleurs bien placées.</p>
       </aside>
     </div>
-    <footer><span>Version 0.2.0 · À chaque essai, une piste de plus.</span><span>Référence : code-couleurs-1.0</span></footer>
+    <footer><span>Version 0.3.0 · À chaque essai, une piste de plus.</span><span>Référence : code-couleurs-1.0</span></footer>
   </main>
+  <dialog id="install-dialog" aria-labelledby="install-title" aria-describedby="install-message">
+    <form method="dialog" class="dialog-close"><button class="secondary" aria-label="Fermer le guide d’installation">Fermer ×</button></form>
+    <div class="install-heading"><img src="assets/icon-192.png" width="64" height="64" alt=""><div><p class="eyebrow">VOTRE PROCHAINE PAUSE LOGIQUE</p><h2 id="install-title">Installer Code secret</h2></div></div>
+    <p id="install-message" role="status"></p>
+    <button id="install-native" type="button" class="primary" hidden>Installer sur cet appareil</button>
+    <div class="install-steps">
+      <section><h3>Android · Chrome</h3><p>Ouvrez le menu ⋮, choisissez « Installer l’application » ou « Ajouter à l’écran d’accueil », puis confirmez l’installation.</p></section>
+      <section><h3>iPhone ou iPad · Safari</h3><p>Ouvrez le menu de partage, puis « Sur l’écran d’accueil ». Activez « Ouvrir comme app web » si l’option est proposée, puis touchez « Ajouter ».</p></section>
+      <section><h3>Ordinateur · Chrome ou Edge</h3><p>Choisissez l’icône d’installation dans la barre d’adresse, ou l’option d’installation du menu du navigateur. Sur Mac avec Safari, utilisez « Fichier » → « Ajouter au Dock » si disponible.</p></section>
+    </div>
+    <p class="install-note">Les intitulés varient selon la version du navigateur. Si aucune option n’est proposée, continuez à jouer dans le navigateur.</p>
+    <section class="qr-panel" aria-label="Ouvrir le jeu sur un téléphone">
+      <a href="https://leelee-heg.github.io/code-secret/?installer=1" aria-label="Ouvrir le jeu et son guide d’installation"><img src="assets/qr-code-secret.png" width="180" height="180" alt="QR code vers Code secret et son guide d’installation"></a>
+      <div><h3>Scannez, ouvrez, installez.</h3><p>Avec l’appareil photo de votre téléphone, scannez ce QR code. Le jeu s’ouvre avec ce guide d’installation.</p><a href="assets/qr-code-secret.png" download="code-secret-qr.png">Télécharger le QR code</a><p><a href="https://leelee-heg.github.io/code-secret/?installer=1">Ouvrir le lien d’installation</a></p></div>
+    </section>
+  </dialog>
 </body>
 </html>

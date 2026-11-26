@@ -1,0 +1,18 @@
+{
+  "id": "/code-secret/",
+  "name": "Code secret",
+  "short_name": "Code secret",
+  "description": "Quatre couleurs cachées, dix essais : un jeu solo de logique en français.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f8f1",
+  "theme_color": "#285c45",
+  "prefer_related_applications": false,
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

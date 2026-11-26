@@ -1,15 +1,42 @@
 # Code secret · Mastermind
 
-Jeu solo réalisé pour le cours avec l’aide de Codex. Retrouvez quatre couleurs cachées en dix essais. Version **0.2.0**, avec l’API commune 0.2 pour le jalon 2. La version du jalon 1 reste conservée par le tag ci-dessous.
+Jeu solo réalisé pour le cours avec l’aide de Codex. Retrouvez quatre couleurs cachées en dix essais. Version **0.3.0**, préparée pour l’installation comme PWA (application web installable), avec l’API commune 0.2. La version du jalon 1 reste conservée par le tag ci-dessous.
 
 - [Dépôt GitHub](https://github.com/leelee-heg/code-secret)
 - [Application publiée sur GitHub Pages](https://leelee-heg.github.io/code-secret/).
+- [Ouvrir le guide d’installation](https://leelee-heg.github.io/code-secret/?installer=1).
 - [Application en mode test API 0.2](https://leelee-heg.github.io/code-secret/?test=1).
 - [Version de rendu J1 : tag GitHub `jalon-1`](https://github.com/leelee-heg/code-secret/tree/jalon-1), commit `9f1d7c2`.
 
 ## État actuel
 
 La version J1 reste repérée par son tag. Le **25 novembre 2026**, l’API commune 0.2 a été intégrée, vérifiée localement, puis publiée sur GitHub Pages. Les contrôles API et interface ont aussi réussi en ligne sur le commit `bb2cfe7`. Les résultats et leurs limites sont détaillés ci-dessous.
+
+La version 0.3.0 ajoute le nom et l’icône d’installation **Code secret**, le guide d’installation, un QR code et un cache hors connexion. Elle conserve le même moteur et la même API. Les tests PWA du 26 novembre sont décrits ci-dessous ; l’installation native sur appareil reste à confirmer.
+
+## Installer sur téléphone ou ordinateur
+
+Ouvrir l’application en HTTPS, puis choisir **« Installer l’application »**. Le guide présente les étapes adaptées aux différents navigateurs. Lorsque Chrome ou Edge transmet une invitation d’installation au jeu, un bouton **« Installer sur cet appareil »** permet d’ouvrir la confirmation native. L’installation reste un choix de la personne qui joue.
+
+- **Android, dont Pixel 8, avec Chrome** : menu ⋮ → « Installer l’application » ou « Ajouter à l’écran d’accueil », puis confirmer l’installation.
+- **iPhone/iPad avec Safari** : menu de partage → « Sur l’écran d’accueil » ; activer « Ouvrir comme app web » si proposé, puis « Ajouter ».
+- **Ordinateur avec Chrome ou Edge** : icône d’installation dans la barre d’adresse ou option d’installation du menu. Sur Mac avec Safari, « Fichier » → « Ajouter au Dock » si disponible.
+
+Les intitulés et possibilités varient selon le navigateur et sa version. Un navigateur intégré peut nécessiter l’ouverture du lien dans Chrome, Edge ou Safari. Le jeu reste utilisable comme site si l’installation n’est pas proposée. Le manifeste demande un lancement autonome, avec le nom **Code secret** et l’icône représentant quatre pions dans un losange vert. L’affichage effectif sur l’écran d’accueil ou le Dock doit être confirmé sur chaque appareil testé.
+
+### QR code à scanner ou partager
+
+Le [QR code PNG](assets/qr-code-secret.png) et sa [version SVG imprimable](assets/qr-code-secret.svg) pointent vers **https://leelee-heg.github.io/code-secret/?installer=1**. Scanner avec l’appareil photo du téléphone, ouvrir le lien, puis suivre le guide affiché automatiquement. Le QR code ne déclenche pas lui-même une installation.
+
+![QR code vers Code secret et le guide d’installation](assets/qr-code-secret.png)
+
+### Hors connexion et mises à jour
+
+Après une première ouverture en ligne et le message « Jeu disponible hors connexion sur cet appareil », les fichiers nécessaires au jeu sont mis en cache. Le chargement initial exige Internet ; un navigateur peut ensuite supprimer son stockage. Les polices sont désormais celles disponibles sur l’appareil : aucun téléchargement de police n’est nécessaire. La partie n’est pas sauvegardée : recharger ou rouvrir le jeu recommence une partie.
+
+Le service worker est limité au dossier du jeu et à ses ressources, sans stocker le secret ou l’historique. Le mode `?test=1` utilise le réseau et n’enregistre pas le worker ; les contrôles enseignants ne sont pas destinés à fonctionner hors ligne. Les ressources demandées par un client en mode test sont servies depuis le réseau, même si un worker est déjà actif.
+
+Une mise à jour attend la fermeture des fenêtres du jeu ; elle ne force pas le rechargement d’une partie en cours. Si le jeu signale une nouvelle version, fermer ses fenêtres puis le rouvrir avec Internet. Lors d’une prochaine livraison, actualiser la version du cache dans `sw.js` et les repères des ressources modifiées dans `index.html` et la liste de préchargement.
 
 ## Jouer et comprendre les règles
 
@@ -39,8 +66,12 @@ Nous conservons une application statique en HTML, CSS et JavaScript, sans framew
 | `engine.js` | Secret, validation, indices et fin de partie |
 | `api.js` | Adaptateur du contrat 0.2 et partie unique partagée avec l’interface |
 | `game.js` | Sélecteurs, historique, messages et redémarrage |
+| `manifest.webmanifest`, `pwa.js`, `sw.js` | Identité installable, guide, invitation native et cache hors connexion |
+| `assets/` | Icône originale SVG, PNG d’installation et QR code |
 | `tests.cjs`, `api-checks.js` | Vérifications du moteur et du contrat API |
 | `tests-api.html`, `tests-browser.js` | Contrôles de la véritable interface et de son API dans le navigateur |
+| `tests-pwa.cjs`, `tests-pwa.html`, `tests-pwa-browser.js` | Contrôles automatisés PWA et vérification du vrai cache dans le navigateur |
+| `scripts/generate-pwa-assets.py` | Régénération facultative des icônes et du QR code, avec Pillow et qrcode côté développement uniquement |
 | [AGENTS.md](AGENTS.md) | Consignes durables pour Codex : méthode, contrôles, Git et restitution |
 | `docs/preuves/` | Captures de la correction avant/après |
 
@@ -146,6 +177,29 @@ Le déploiement du commit `bb2cfe7` a réussi. Le même banc de contrôle, ouver
 
 Le test sur Pixel 8 est un retour d’utilisation, distinct du contrôle effectué par Codex à 412 px. Les versions de Chrome et d’Android ainsi que les étapes détaillées de l’essai sur téléphone n’ont pas été consignées ; ce retour ne constitue pas un test exhaustif de l’API ou de tous les navigateurs mobiles.
 
+### Vérifications PWA — 26 novembre 2026
+
+Depuis la racine, exécuter `node tests.cjs`, puis `node tests-pwa.cjs`. Les contrôles PWA ne nécessitent aucune dépendance supplémentaire. Ils examinent le manifeste et les PNG livrés, puis utilisent des doubles de test pour vérifier le repli hors ligne, l’isolation des caches, les invitations d’installation et leur annulation. Ces simulations ne constituent pas une installation réelle.
+
+Avec le serveur local décrit ci-dessus, ouvrir `tests-pwa.html` et cliquer sur « Vérifier les ressources PWA ». Attendu : « SUCCÈS : ressources PWA prêtes. » Ce banc vérifie un véritable service worker et le contenu de son cache, sans couper le réseau. `tests-api.html` reste disponible pour rejouer les contrôles du jeu et des accords.
+
+| Contrôle exécuté localement | Résultat |
+| --- | --- |
+| Moteur : 6 561 paires ; API : 18 groupes | Réussis |
+| Manifeste, identité propre à `/code-secret/`, icônes PNG 192 et 512 px, icône maskable et icône Apple | Conformes aux contrôles de fichiers |
+| QR PNG décodé par un outil indépendant de celui de génération | Adresse exacte `https://leelee-heg.github.io/code-secret/?installer=1` |
+| Repli hors ligne, priorité réseau, cache propre au jeu et exclusion du mode test | Réussis dans les simulations du worker |
+| Service worker réellement actif et ressources réellement présentes dans Cache Storage | Vérifiés dans le navigateur intégré |
+| Guide ouvert automatiquement par `?installer=1`, fermeture par Échap, réouverture pendant une partie | Vérifiés ; partie conservée |
+| Affichage du guide à 412 px | Aucun débordement horizontal mesuré, contenu accessible par défilement |
+| Contrôles API/interface et accords après ajout PWA | Réussis dans le navigateur intégré |
+
+Le [relevé PWA](docs/preuves/pwa-0.3.0.txt) distingue les observations réelles des simulations. La génération et le décodage du QR ont utilisé qrcode, Pillow et zxing-cpp uniquement comme outils de développement ; les images livrées sont statiques. La régénération n’est requise ni pour jouer ni pour déployer.
+
+Pour vérifier sur un appareil réel : installer depuis le site public, contrôler le nom et l’icône sur l’écran d’accueil ou le Dock, ouvrir l’icône, attendre la préparation hors connexion, fermer le jeu, activer le mode avion puis rouvrir et jouer un coup. Tester ensuite une mise à jour avec une partie déjà ouverte. Ces essais natifs n’ont pas été réalisés par Codex ; le retour Pixel 8/Chrome ci-dessus concernait le jeu avant l’ajout de la PWA.
+
+Sources techniques consultées pour cette étape : [installation PWA (MDN)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable), [invitation d’installation (MDN)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/How_to/Trigger_install_prompt), [identité du manifeste (MDN)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest/Reference/id), [cycle de vie du service worker (web.dev)](https://web.dev/articles/service-worker-lifecycle) et [ajout à l’écran d’accueil sur iPhone (Apple)](https://support.apple.com/guide/iphone/bookmark-a-website-iph42ab2f3a7/ios).
+
 ## Une correction expliquée
 
 **Avant** (`a7b1e6c`, preuve enregistrée dans `0fd7f2e`) : choisir vert–violet–vert–violet et valider affichait **V V V V** dans l’historique. Impossible de distinguer ces deux couleurs par leur symbole seul.
@@ -164,7 +218,7 @@ La correction reprend dans le résumé la règle d’accord déjà utilisée par
 
 Le secret est caché pendant la partie, mais reste accessible à une personne qui inspecte le navigateur. Recharger la page fait perdre la partie en cours.
 
-Le fonctionnement hors ligne et un parcours clavier complet restent à vérifier. Un fonctionnement correct a été rapporté sur Pixel 8 avec Chrome ; les autres appareils et navigateurs mobiles ne sont pas couverts par ce retour. Les polices Google sont facultatives.
+Le rechargement et le jeu réellement sans réseau, l’installation native sur smartphone/ordinateur et un parcours clavier complet restent à vérifier sur appareil. Le cache réel et le repli hors ligne simulé ont été contrôlés séparément. Un fonctionnement correct du jeu avant ajout PWA a été rapporté sur Pixel 8 avec Chrome ; ce retour ne valide pas son installation ni les autres appareils et navigateurs mobiles.
 
 L’API 0.2 a été vérifiée localement et sur GitHub Pages avec les contrôles décrits ci-dessus. Restent à vérifier : son comportement depuis un contexte neuf avec caches explicitement vidés, et l’outil de test de l’enseignant, qui n’a pas été fourni. Le tag `jalon-1` n’est pas une version de cette API ; il reste inchangé. Aucun résultat de conformité à un outil non exécuté n’est revendiqué.
 

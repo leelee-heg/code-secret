@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <title>Code secret : quatre pions de couleur dans un losange</title>
+  <path fill="#285c45" d="M0 0h512v512H0z"/>
+  <path fill="none" stroke="#f7f8f1" stroke-width="14" stroke-linejoin="round" d="M256 84 428 256 256 428 84 256Z"/>
+  <circle cx="214" cy="214" r="29" fill="#d64d4b"/>
+  <circle cx="298" cy="214" r="29" fill="#4e7bce"/>
+  <circle cx="214" cy="298" r="29" fill="#eac64c"/>
+  <circle cx="298" cy="298" r="29" fill="#9771bf"/>
+</svg>
